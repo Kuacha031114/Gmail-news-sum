@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Summarizer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Email Summarizer</h1>
+    <div class="form">
+      <label for="sender">Sender Email:</label>
+      <input type="text" id="sender" placeholder="Enter sender's email">
+      <label for="maxResults">Number of Emails:</label>
+      <input type="number" id="maxResults" value="3">
+      <button id="search">Search Emails</button>
+      <button id="summarize">Summarize Emails</button>
+    </div>
+
+    <div id="emails">
+      <!-- 搜索到的邮件内容将显示在这里 -->
+    </div>
+
+    <div id="summary">
+      <h2>Summary:</h2>
+      <!-- Markdown 渲染区域 -->
+      <div id="summaryContent" class="markdown-content"></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -25,6 +25,7 @@ class EmailSummarizer:
         """
         # 创建 Prompt
         prompt = f"""
+I will upload three documents containing news briefings from the past 12 hours in Asia, Americas, and Europe.
 The news email details are as follows:
 
 Sender: {senders[0]}
@@ -42,15 +43,19 @@ Subject: {subjects[2]}
 Body:
 {bodies[2]}
 
+Based strictly on the content of these documents, please compile a global news briefing as follows:
+    1.Identify and summarize events mentioned in all three regional news briefings, creating a comprehensive summary from the perspectives provided.
+    2.Categorize and summarize the remaining news from each region, limiting each item to 50 words.
+    3.Ensure no news item is skipped or omitted from the documents.
 Please write a 600-800 word summary based on the above news content. And tell me the relevant news time at the beginning.
 """
 
         try:
             # 调用 OpenAI API
             response = self.client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="claude-3-5-sonnet-20241022",
                 messages=[
-                    {"role": "system", "content": "You are an news email summarization assistant."},
+                    {"role": "system", "content": "You are an experienced financial news editor."},
                     {"role": "user", "content": prompt}
                 ]
             )
